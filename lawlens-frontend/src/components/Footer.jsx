@@ -3,7 +3,7 @@ import logo from "../assets/Logo.png";
 
 function Footer() {
   return (
-    <footer className="w-full bg-gradient-to-r from-[#0f1b34] to-[#1b294d] py-6">
+    <footer className="w-full bg-gradient-to-r from-[#0f1b34] to-[#1b294d] mt-6 py-6">
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
 
         {/* Left - Logo */}

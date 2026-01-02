@@ -37,7 +37,7 @@ function Features() {
 
   return (
     <>
-      <section className="w-full py-24 bg-gradient-to-b from-white to-[#f6f7fb]">
+      <section className="w-full py-16 bg-[#f6f7fb]">
         <div className="max-w-7xl mx-auto px-6">
 
           {/* Badge */}
