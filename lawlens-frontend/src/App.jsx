@@ -1,12 +1,11 @@
 import React from 'react'
+import HeroSection from './components/HeroSection.jsx'
 import Navbar from './components/Navbar.jsx'
-import HeroBackgroundBoxes from './components/HeroBackgroundBoxes.jsx'
 function App() {
   return (
     <>
     <Navbar/>
-    <HeroBackgroundBoxes />
-    
+    <HeroSection/>
     </>
    
   )

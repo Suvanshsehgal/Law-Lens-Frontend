@@ -21,14 +21,14 @@ export const Boxes = () => {
 
   return (
     <div
-      className="absolute inset-0 w-full h-full overflow-hidden relative"
+      className="absolute inset-0 w-full h-full overflow-hidden -z-10"
       onMouseMove={(e) => {
         const r = e.currentTarget.getBoundingClientRect();
         setPos({ x: e.clientX - r.left, y: e.clientY - r.top });
       }}
     >
 
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0a1026] via-[#0b1635] to-[#0b1a3f]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#222E46] via-[#1D2840] to-[#1A2338]" />
 
       <div
         className="absolute inset-0 opacity-[0.85]"
