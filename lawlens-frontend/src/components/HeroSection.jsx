@@ -1,21 +1,8 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Boxes } from "../components/ui/background-boxes";
 import { cn } from "../lib/utils";
 
-function HeroSection({ onFileSelect }) {
-  const fileInputRef = useRef(null);
-
-  const handleClick = () => {
-    fileInputRef.current.click();
-  };
-
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file && onFileSelect) {
-      onFileSelect(file);
-    }
-  };
-
+function HeroSection({ onUploadClick }) {
   return (
     <div className="h-screen relative z-10 w-full overflow-hidden bg-[#222E46] flex flex-col items-center justify-center rounded-lg">
 
@@ -51,20 +38,11 @@ function HeroSection({ onFileSelect }) {
       {/* CTA */}
       <div className="relative z-30 mt-8">
         <button
-          onClick={handleClick}
+          onClick={onUploadClick}
           className="playfair inline-flex items-center px-8 py-4 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold text-xl transition-all duration-300 hover:scale-105"
         >
           Upload Your Document
         </button>
-
-        {/* Hidden file input */}
-        <input
-          type="file"
-          accept="application/pdf"
-          ref={fileInputRef}
-          onChange={handleFileChange}
-          className="hidden"
-        />
       </div>
     </div>
   );

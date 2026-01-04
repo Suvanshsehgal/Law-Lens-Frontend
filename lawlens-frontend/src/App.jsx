@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import Navbar from "./components/Navbar.jsx";
 import HeroSection from "./components/HeroSection.jsx";
+import Features from "./components/Features.jsx";
+import Working from "./components/Working.jsx";
 import Footer from "./components/Footer.jsx";
 import Upload from "./components/Upload.jsx";
 
@@ -10,18 +12,29 @@ import CaseLawSection from "./components/CaseLawSection.jsx";
 import ChatSection from "./components/ChatSection.jsx";
 import DownloadPDF from "./components/DownloadPDF.jsx";
 
+import PopUp from "./components/PopUp.jsx";
+
 function App() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [docResult, setDocResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [showUploadModal, setShowUploadModal] = useState(false);
 
   return (
     <>
       <Navbar />
 
       {/* HERO SECTION */}
-      <HeroSection onFileSelect={setSelectedFile} />
+      <HeroSection onUploadClick={() => setShowUploadModal(true)} />
+
+      {/* POPUP MODAL */}
+      {showUploadModal && (
+        <PopUp
+          onClose={() => setShowUploadModal(false)}
+          onFileSelect={setSelectedFile}
+        />
+      )}
 
       {/* BACKEND PROCESSING */}
       {selectedFile && (
@@ -30,6 +43,7 @@ function App() {
           setDocResult={setDocResult}
           setLoading={setLoading}
           setError={setError}
+          onClose={() => setShowUploadModal(false)}
         />
       )}
 
@@ -65,6 +79,8 @@ function App() {
         </div>
       )}
 
+      <Features />
+      <Working />
       <Footer />
     </>
   );
