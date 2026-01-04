@@ -63,19 +63,19 @@ function App() {
 
       {/* AI RESPONSE SECTIONS */}
       {docResult && !loading && (
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4 mt-12 space-y-10">
 
-          {/* KEYWORD MEANINGS */}
-          <KeywordsSection meanings={docResult?.keyword_meanings} />
+          {/* KEYWORDS + CHAT (SAME GRID) */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+            <KeywordsSection meanings={docResult?.keyword_meanings} />
+            <ChatSection sessionId={docResult?.session_id} />
+          </div>
 
+          <DownloadPDF sessionId={docResult?.session_id} />
           {/* CASE LAWS */}
           <CaseLawSection caseLaws={docResult?.case_laws} />
 
-          {/* DOWNLOAD HIGHLIGHTED PDF */}
-          <DownloadPDF sessionId={docResult?.session_id} />
-
-          {/* CHAT */}
-          <ChatSection sessionId={docResult?.session_id} />
+          {/* DOWNLOAD PDF */}
         </div>
       )}
 
