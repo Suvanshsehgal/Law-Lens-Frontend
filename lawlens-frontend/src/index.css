@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+
 
 @import "tailwindcss";
 
@@ -11,6 +14,12 @@
 }
 .source_sans{
   font-family: 'Source-Sans3';
+}
+.heading{
+  font-family: 'Fraunces';
+}
+.subtext{
+  font-family: 'DM Sans';
 }
 body {
   background-color: #f6f7fb;
