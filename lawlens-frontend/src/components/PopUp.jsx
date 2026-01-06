@@ -30,7 +30,7 @@ function PopUp({ onClose, onFileSelect }) {
 
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-800 playfair">
+          <h2 className="text-2xl font-bold text-gray-800 heading">
             Upload Legal Document
           </h2>
 
@@ -74,16 +74,16 @@ function PopUp({ onClose, onFileSelect }) {
                 </div>
 
                 {/* Text */}
-                <p className="inter text-b font-medium text-gray-700 mb-1">
+                <p className="subtext text-b font-medium text-gray-700 mb-1">
                   Drop your document here
                 </p>
-                <p className="inter text-gray-500 text-sm">
+                <p className="subtext text-gray-500 text-sm">
                   or click to browse (PDF, DOCX)
                 </p>
 
                 {/* File Status */}
                 <div className="mt-4">
-                  <div className="inter inline-block px-3 py-1 bg-gray-800 text-white rounded text-sm ">
+                  <div className="subtext inline-block px-3 py-1 bg-gray-800 text-white rounded text-sm ">
                     No file chosen
                   </div>
                 </div>
@@ -96,7 +96,7 @@ function PopUp({ onClose, onFileSelect }) {
         <div className="flex gap-3 mt-6">
           <button
             onClick={onClose}
-            className="inter flex-1 px-4 py-3 rounded border-2 border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-colors"
+            className="subtext flex-1 px-4 py-3 rounded border-2 border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-colors"
           >
             Cancel
           </button>
@@ -104,7 +104,7 @@ function PopUp({ onClose, onFileSelect }) {
           <button
             disabled={!file}
             onClick={handleAnalyze}
-            className={` inter flex-1 px-4 py-3 rounded text-white font-medium flex items-center justify-center gap-2 transition-colors
+            className={` subtext flex-1 px-4 py-3 rounded text-white font-medium flex items-center justify-center gap-2 transition-colors
               ${file
                 ? "bg-slate-600 hover:bg-slate-700"
                 : "bg-gray-400 cursor-not-allowed"}`}
