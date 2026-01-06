@@ -24,10 +24,10 @@ function Navbar() {
               alt="LawLens Logo"
               className="w-9 h-9 object-contain"
             />
-            <span className="text-2xl playfair font-bold tracking-wide">
+            <span className="text-2xl heading font-bold tracking-wide">
               Law
             </span>
-            <span className=" text-2xl playfair font-bold tracking-wide -translate-x-3 text9-amber">
+            <span className=" text-2xl heading font-bold tracking-wide -translate-x-3 text9-amber">
               Lens
             </span>
 
@@ -40,13 +40,13 @@ function Navbar() {
             <div className="flex items-center space-x-8">
               <a
                 href="#features"
-                className=" playfair text-base tracking-wide hover:text-amber-400 transition-colors"
+                className=" heading text-base tracking-wide hover:text-amber-400 transition-colors"
               >
                 Features
               </a>
               <a
                 href="#how-it-works"
-                className="playfair text-base tracking-wide hover:text-amber-400 transition-colors"
+                className="heading text-base tracking-wide hover:text-amber-400 transition-colors"
               >
                 How It Works
               </a>
@@ -54,7 +54,7 @@ function Navbar() {
 
             <button
               className="
-                playfair text-base
+                heading text-base
                 px-5 py-2 rounded-md
                 bg-amber-500/90 text-slate-900 font-semibold
                 transition-all duration-300 ease-out
@@ -96,7 +96,7 @@ function Navbar() {
 
             <a
               href="#features"
-              className="block font-playfair text-base tracking-wide hover:text-amber-400"
+              className="block font-heading text-base tracking-wide hover:text-amber-400"
               onClick={() => setOpen(false)}
             >
               Features
@@ -104,7 +104,7 @@ function Navbar() {
 
             <a
               href="#how-it-works"
-              className="block font-playfair text-base tracking-wide hover:text-amber-400"
+              className="block font-heading text-base tracking-wide hover:text-amber-400"
               onClick={() => setOpen(false)}
             >
               How It Works
@@ -113,7 +113,7 @@ function Navbar() {
             <button
               className="
                 w-full
-                font-playfair text-base
+                font-heading text-base
                 px-5 py-2 rounded-md
                 bg-amber-500/90 text-slate-900 font-semibold
                 transition-all duration-300

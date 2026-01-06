@@ -42,19 +42,19 @@ function Features() {
 
           {/* Badge */}
           <div className="w-full flex justify-center mb-4">
-            <span className="px-5 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium playfair">
+            <span className="px-5 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium heading">
               Powerful Capabilities
             </span>
           </div>
 
           {/* Heading */}
-          <h2 className="text-4xl md:text-5xl font-bold text-center playfair">
+          <h2 className="text-4xl md:text-5xl font text-center playfair">
             Everything You Need for{" "}
             <span className="text-amber-500">Legal Analysis</span>
           </h2>
 
           {/* Subtitle */}
-          <p className="inter text-center text-gray-500 mt-4 max-w-3xl mx-auto text-sm">
+          <p className="subtext text-center text-gray-500 mt-4 max-w-3xl mx-auto text-sm">
             LawLens combines cutting-edge AI with legal expertise to provide
             comprehensive document analysis tools.
           </p>
@@ -75,13 +75,13 @@ function Features() {
                       <Icon size={28} strokeWidth={2.2} />
                     </div>
 
-                    <h3 className="text-xl font-semibold playfair">
+                    <h3 className="text-xl font-semibold heading">
                       {item.title}
                     </h3>
                   </div>
 
                   {/* Description */}
-                  <p className="inter text-gray-500 leading-relaxed text-sm">
+                  <p className="subtext text-gray-500 leading-relaxed text-sm">
                     {item.desc}
                   </p>
                 </div>

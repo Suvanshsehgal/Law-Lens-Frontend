@@ -91,17 +91,17 @@ function ChatSection({ sessionId }) {
             <Bot className="w-5 h-5 text-amber-500" />
           </div>
           <div>
-            <p className="playfair text-xs tracking-widest text-gray-500">
+            <p className="heading text-xs tracking-widest text-gray-500">
               Assistant
             </p>
-            <h2 className="playfair text-3xl font-semibold font-serif text-gray-900">
+            <h2 className="heading text-3xl font-semibold font-serif text-gray-900">
               AI Legal Advisor
             </h2>
           </div>
         </div>
 
         <span className="flex items-center gap-2 text-sm px-3 py-1 rounded-full bg-green-100 text-green-700">
-          <span className="inter h-2 w-2 bg-green-500 rounded-full"></span>
+          <span className="subtext h-2 w-2 bg-green-500 rounded-full"></span>
           Ready
         </span>
       </div>
@@ -114,14 +114,14 @@ function ChatSection({ sessionId }) {
         {/* Intro */}
         {messages.length === 0 && (
           <>
-            <div className="inter bg-[#FBF7F2] rounded-xl p-4 text-xs text-gray-700">
+            <div className="subtext bg-[#FBF7F2] rounded-xl p-4 text-xs text-gray-700">
               I've analyzed your document. Ask me anything about clauses, terms,
               or obligations. I can help you understand complex legal language.
             </div>
 
             {/* Starter Questions Box */}
             <div className="bg-white border border-gray-200 rounded p-4">
-              <p className="inter text-sm font-medium text-gray-700 mb-3">
+              <p className="subtext text-sm font-medium text-gray-700 mb-3">
                 Try asking:
               </p>
 

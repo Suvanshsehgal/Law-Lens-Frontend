@@ -32,13 +32,13 @@ export default function KeywordsSection({ meanings }) {
         </div>
 
         <div>
-          <p className="playfair text-xs tracking-widest text-gray-500 mb-1">
+          <p className="heading text-xs tracking-widest text-gray-500 mb-1">
             EXTRACTED
           </p>
-          <h2 className="playfair text-3xl font-semibold text-gray-900 font-serif">
+          <h2 className="heading text-3xl font-semibold text-gray-900 font-serif">
             Key Legal Terms
           </h2>
-          <p className="inter text-sm text-gray-500 mt-1">
+          <p className="subtext text-sm text-gray-500 mt-1">
             {entries.length} key terms identified in your document
           </p>
         </div>
@@ -62,7 +62,7 @@ export default function KeywordsSection({ meanings }) {
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   className="w-full flex items-center justify-between px-5 py-4"
                 >
-                  <span className="playfair font-medium text-gray-900">
+                  <span className="heading font-medium text-gray-900">
                     {capitalizeWords(keyword)}
                   </span>
 

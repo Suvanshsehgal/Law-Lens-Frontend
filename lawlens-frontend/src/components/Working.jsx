@@ -33,7 +33,7 @@ function Working() {
                 <div className="max-w-6xl mx-auto px-6">
 
                     {/* Heading */}
-                    <h2 className="text-4xl md:text-5xl font-bold text-center mb-14 playfair">
+                    <h2 className="text-4xl md:text-5xl  text-center mb-14 heading">
                         How LawLens <span className="text-amber-500">Works</span>
                     </h2>
 
@@ -65,8 +65,8 @@ function Working() {
                     <div className="grid grid-cols-4 text-center">
                         {steps.map(step => (
                             <div key={step.id}>
-                                <h3 className="text-lg font-semibold playfair">{step.title}</h3>
-                                <p className="text-gray-500 text-sm inter mt-1">{step.desc}</p>
+                                <h3 className="text-lg font-semibold heading">{step.title}</h3>
+                                <p className="text-gray-500 text-sm subtext mt-1">{step.desc}</p>
                             </div>
                         ))}
                     </div>

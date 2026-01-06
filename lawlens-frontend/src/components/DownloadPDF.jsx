@@ -21,15 +21,15 @@ function DownloadPDF({ sessionId, fileName }) {
 
       {/* LEFT */}
       <div>
-        <p className="playfair text-sm font-semibold tracking-wide text-gray-500">
+        <p className="heading text-sm font-semibold tracking-wide text-gray-500">
           DOWNLOAD
         </p>
 
-        <h1 className="playfair text-4xl font-bold mt-1">
+        <h1 className="heading text-4xl font-bold mt-1">
           Annotated PDF
         </h1>
 
-        <p className="inter text-gray-600 mt-3 max-w-xl leading-relaxed">
+        <p className="subtext text-gray-600 mt-3 max-w-xl leading-relaxed">
           Get your document with all important terms highlighted, risk
           areas marked, and detailed annotations for easy reference.
         </p>
@@ -37,21 +37,21 @@ function DownloadPDF({ sessionId, fileName }) {
         <div className="mt-6 space-y-4">
           <div className="flex items-center gap-3">
             <Highlighter className="text-yellow-600" />
-            <p className="text-gray-700 inter text-sm">
+            <p className="text-gray-700 subtext text-sm">
               Highlighted key terms and definitions
             </p>
           </div>
 
           <div className="flex items-center gap-3">
             <AlignLeft className="text-yellow-600" />
-            <p className="inter text-gray-700 text-sm">
+            <p className="subtext text-gray-700 text-sm">
               Margin annotations with explanations
             </p>
           </div>
 
           <div className="flex items-center gap-3">
             <AlertTriangle className="text-yellow-600" />
-            <p className="text-gray-700 inter text-sm">
+            <p className="text-gray-700 subtext text-sm">
               Risk indicators and warnings
             </p>
           </div>
@@ -66,7 +66,7 @@ function DownloadPDF({ sessionId, fileName }) {
           </div>
 
           <div>
-            <p className="font-semibold text-gray-800 inter">
+            <p className="font-semibold text-gray-800 subtext">
               {fileName || "document.pdf"}
             </p>
           </div>
@@ -74,7 +74,7 @@ function DownloadPDF({ sessionId, fileName }) {
 
         <div className="bg-green-100 px-4 py-3 rounded-xl flex items-center gap-2 mt-5">
           <CheckCircle2 className="text-green-600" />
-          <span className="inter text-green-700 ">
+          <span className="subtext text-green-700 ">
             Ready for download
           </span>
         </div>
@@ -84,7 +84,7 @@ function DownloadPDF({ sessionId, fileName }) {
           className="mt-6 w-full bg-[#0B0F19] hover:bg-gray-900
            text-white py-3 rounded-xl font-medium flex items-center justify-center gap-2"
         >
-          <Download className="inter w-5 h-5" />
+          <Download className="subtext w-5 h-5" />
           Download Annotated PDF
         </button>
       </div>

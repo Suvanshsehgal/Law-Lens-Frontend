@@ -12,13 +12,13 @@ function Footer() {
             <img src={logo} alt="LawLens Logo" className="w-full h-full object-contain" />
           </div>
 
-          <span className="text-white text-lg font-bold">
+          <span className="heading text-white text-lg font-bold">
             Law<span className="text-amber-400">Lens</span>
           </span>
         </div>
 
         {/* Center - Copyright */}
-        <p className="text-gray-300 text-sm text-center">
+        <p className="subtext text-gray-300 text-sm text-center">
           © 2026 LawLens. All rights reserved.
         </p>
 
