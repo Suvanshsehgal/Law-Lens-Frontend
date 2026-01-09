@@ -6,6 +6,7 @@ import Features from "./components/Features.jsx";
 import Working from "./components/Working.jsx";
 import Footer from "./components/Footer.jsx";
 import Upload from "./components/Upload.jsx";
+import AnalysisComp from "./components/AnalysisComp.jsx";
 
 import KeywordsSection from "./components/KeywordsSection.jsx";
 import CaseLawSection from "./components/CaseLawSection.jsx";
@@ -65,6 +66,13 @@ function App() {
       {docResult && !loading && (
         <div className="max-w-7xl mx-auto px-4 mt-12 space-y-10">
 
+          <AnalysisComp
+          
+          
+          
+          
+          
+          />
           {/* KEYWORDS + CHAT (SAME GRID) */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
             <KeywordsSection meanings={docResult?.keyword_meanings} />

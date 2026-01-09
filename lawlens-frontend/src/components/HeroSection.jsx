@@ -24,7 +24,7 @@ function HeroSection({ onUploadClick }) {
       </div>
 
       {/* Heading */}
-      <h1 className="relative z-30 md:text-7xl text-5xl  text-white text-center max-w-4xl leading-tight heading">
+      <h1 className="relative z-30 md:text-7xl text-5xl text-white text-center max-w-4xl leading-tight heading">
         Unlock Legal Insights <br />
         with <span className="text-amber-400">Law Lens</span>
       </h1>
