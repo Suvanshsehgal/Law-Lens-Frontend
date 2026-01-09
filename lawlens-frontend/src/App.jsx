@@ -15,7 +15,20 @@ import DownloadPDF from "./components/DownloadPDF.jsx";
 
 import PopUp from "./components/PopUp.jsx";
 
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+
+
 function App() {
+  const location = useLocation();
+
+useEffect(() => {
+  if (location.state?.scrollTo) {
+    const el = document.getElementById(location.state.scrollTo);
+    el?.scrollIntoView({ behavior: "smooth" });
+  }
+}, [location]);
+
   const [selectedFile, setSelectedFile] = useState(null);
   const [docResult, setDocResult] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -66,13 +79,7 @@ function App() {
       {docResult && !loading && (
         <div className="max-w-7xl mx-auto px-4 mt-12 space-y-10">
 
-          <AnalysisComp
-          
-          
-          
-          
-          
-          />
+          <AnalysisComp />
           {/* KEYWORDS + CHAT (SAME GRID) */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
             <KeywordsSection meanings={docResult?.keyword_meanings} />
@@ -87,8 +94,13 @@ function App() {
         </div>
       )}
 
-      <Features />
-      <Working />
+      <section id="features">
+        <Features />
+      </section>
+
+      <section id="how-it-works">
+        <Working />
+      </section>
       <Footer />
     </>
   );
