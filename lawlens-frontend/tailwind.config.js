@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      animation:{
+        fadeIn: "fadeIn 0.4s ease-in-out",
+      },
       fontFamily: {
         'playfair': ["'Playfair Display'", "serif"],
         'inter': ["'Inter'", "sans-serif"],
