@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { uploadPDF } from "../lib/api";
 
 function Upload({ file, setDocResult, setLoading, setError }) {
-
   useEffect(() => {
     if (!file) return;
 
@@ -12,7 +11,7 @@ function Upload({ file, setDocResult, setLoading, setError }) {
 
       try {
         const response = await uploadPDF(file);
-        setDocResult(response); 
+        setDocResult(response);
       } catch (err) {
         console.error(err);
         setError("Failed to process document. Please try again.");
@@ -22,7 +21,7 @@ function Upload({ file, setDocResult, setLoading, setError }) {
     };
 
     processDocument();
-  }, [file]);
+  }, [file, setDocResult, setLoading, setError]);
 
   return null;
 }

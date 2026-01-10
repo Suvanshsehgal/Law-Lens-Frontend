@@ -14,6 +14,7 @@ import ChatSection from "./components/ChatSection.jsx";
 import DownloadPDF from "./components/DownloadPDF.jsx";
 
 import PopUp from "./components/PopUp.jsx";
+import Preloader from "./components/Preloader.jsx";
 
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
@@ -38,7 +39,7 @@ useEffect(() => {
   return (
     <>
       <Navbar />
-
+      <Preloader show={loading} />
       {/* HERO SECTION */}
       <HeroSection onUploadClick={() => setShowUploadModal(true)} />
 
@@ -46,7 +47,12 @@ useEffect(() => {
       {showUploadModal && (
         <PopUp
           onClose={() => setShowUploadModal(false)}
-          onFileSelect={setSelectedFile}
+          onFileSelect={(file) => {
+            // Clear previous results when selecting a new file
+            setDocResult(null);
+            setError(null);
+            setSelectedFile(file);
+          }}
         />
       )}
 
@@ -57,7 +63,6 @@ useEffect(() => {
           setDocResult={setDocResult}
           setLoading={setLoading}
           setError={setError}
-          onClose={() => setShowUploadModal(false)}
         />
       )}
 
@@ -77,7 +82,7 @@ useEffect(() => {
 
       {/* AI RESPONSE SECTIONS */}
       {docResult && !loading && (
-        <div className="max-w-7xl mx-auto px-4 mt-12 space-y-10">
+        <div className="max-w-7xl mx-auto px-4 mt-12 space-y-10 animate-fadeIn">
 
           <AnalysisComp />
           {/* KEYWORDS + CHAT (SAME GRID) */}

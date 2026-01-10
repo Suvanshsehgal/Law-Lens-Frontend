@@ -16,13 +16,18 @@ function PopUp({ onClose, onFileSelect }) {
     onClose();            
   };
 
+  const handleClose = () => {
+    setFile(null); // Reset file state when closing
+    onClose();
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
 
       {/* Background Blur */}
       <div
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-        onClick={onClose}
+        onClick={handleClose}
       />
 
       {/* Modal */}
@@ -35,7 +40,7 @@ function PopUp({ onClose, onFileSelect }) {
           </h2>
 
           <button
-            onClick={onClose}
+            onClick={handleClose}
             className="text-gray-400 hover:text-gray-600 text-xl w-6 h-6 flex items-center justify-center"
           >
             <X size={20} />
@@ -95,7 +100,7 @@ function PopUp({ onClose, onFileSelect }) {
         {/* Buttons */}
         <div className="flex gap-3 mt-6">
           <button
-            onClick={onClose}
+            onClick={handleClose}
             className="subtext flex-1 px-4 py-3 rounded border-2 border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-colors"
           >
             Cancel
