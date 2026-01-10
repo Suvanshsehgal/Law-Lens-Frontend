@@ -24,11 +24,12 @@ function Navbar() {
   return (
     <nav
       className="
-        fixed top-0 w-full z-50
-        bg-white/5
-        backdrop-blur-md
-        border-b border-white/10
-        text-white
+       fixed top-0 w-full z-50
+    bg-[#1E293B]/95
+    backdrop-blur-md
+    border-b border-white/10
+    text-white
+    transition-colors duration-300
       "
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
