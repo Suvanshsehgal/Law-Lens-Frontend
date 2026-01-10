@@ -1,11 +1,33 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import logo from "../assets/Logo.png";
 import { useNavigate, useLocation } from "react-router-dom";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
+  const [user, setUser] = useState(null);
+  const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+
+  // Check if user is logged in
+  useEffect(() => {
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      setUser(JSON.parse(userData));
+    }
+  }, [location]);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (showDropdown && !event.target.closest('.user-dropdown')) {
+        setShowDropdown(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [showDropdown]);
 
   // Navigate to home and scroll to section
   const goToSection = (id) => {
@@ -19,6 +41,16 @@ function Navbar() {
       const el = document.getElementById(id);
       el?.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  // Handle logout
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    setUser(null);
+    setShowDropdown(false);
+    setOpen(false);
+    navigate("/");
   };
 
   return (
@@ -71,20 +103,51 @@ function Navbar() {
               </button>
             </div>
 
-            <button
-              onClick={() => navigate("/login")}
-              className="
-                heading text-base
-                px-5 py-2 rounded-md
-                bg-amber-500/90 text-slate-900 font-semibold
-                transition-all duration-300 ease-out
-                hover:bg-amber-400
-                hover:shadow-lg hover:shadow-amber-500/30
-                hover:scale-x-105
-              "
-            >
-              Get Started
-            </button>
+            {user ? (
+              <div className="relative user-dropdown">
+                <button
+                  onClick={() => setShowDropdown(!showDropdown)}
+                  className="
+                    heading text-base
+                    px-5 py-2 rounded-md
+                    bg-amber-500/90 text-slate-900 font-semibold
+                    transition-all duration-300 ease-out
+                    hover:bg-amber-400
+                    hover:shadow-lg hover:shadow-amber-500/30
+                    flex items-center gap-2
+                  "
+                >
+                  Hi, {user.name}
+                  <span className="text-xs">▼</span>
+                </button>
+
+                {showDropdown && (
+                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-200 py-2">
+                    <button
+                      onClick={handleLogout}
+                      className="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 transition"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <button
+                onClick={() => navigate("/login")}
+                className="
+                  heading text-base
+                  px-5 py-2 rounded-md
+                  bg-amber-500/90 text-slate-900 font-semibold
+                  transition-all duration-300 ease-out
+                  hover:bg-amber-400
+                  hover:shadow-lg hover:shadow-amber-500/30
+                  hover:scale-x-105
+                "
+              >
+                Get Started
+              </button>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -119,21 +182,41 @@ function Navbar() {
               How It Works
             </button>
 
-            <button
-              onClick={() => {
-                setOpen(false);
-                navigate("/login");
-              }}
-              className="
-                w-full
-                heading text-base
-                px-5 py-2 rounded-md
-                bg-amber-500/90 text-slate-900 font-semibold
-                hover:bg-amber-400
-              "
-            >
-              Get Started
-            </button>
+            {user ? (
+              <div className="space-y-2">
+                <div className="heading text-base text-amber-400 px-5 py-2">
+                  Hi, {user.name}
+                </div>
+                <button
+                  onClick={handleLogout}
+                  className="
+                    w-full
+                    heading text-base
+                    px-5 py-2 rounded-md
+                    bg-red-500/90 text-white font-semibold
+                    hover:bg-red-600
+                  "
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => {
+                  setOpen(false);
+                  navigate("/login");
+                }}
+                className="
+                  w-full
+                  heading text-base
+                  px-5 py-2 rounded-md
+                  bg-amber-500/90 text-slate-900 font-semibold
+                  hover:bg-amber-400
+                "
+              >
+                Get Started
+              </button>
+            )}
           </div>
         </div>
       )}
