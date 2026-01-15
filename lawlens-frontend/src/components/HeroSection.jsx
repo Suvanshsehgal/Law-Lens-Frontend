@@ -17,14 +17,14 @@ function HeroSection({ onUploadClick }) {
       <div className="relative z-30 mb-1">
         <div className="inline-flex items-center px-4 py-2 rounded-full bg-amber-500/20 border border-amber-500/30 backdrop-blur-sm">
           <span className="text-amber-400 mr-2">⚖️</span>
-          <span className="text-amber-100 text-base font-medium">
+          <span className="text-amber-100 md:text-base text-xs font-medium">
             AI-Powered Legal Document Analysis
           </span>
         </div>
       </div>
 
       {/* Heading */}
-      <h1 className="relative z-30 md:text-7xl text-4xl text-white text-center max-w-4xl leading-tight heading">
+      <h1 className="relative z-30 md:text-7xl text-5xl text-white text-center max-w-4xl leading-tight heading">
         Unlock Legal Insights <br />
         with <span className="text-amber-400">Law Lens</span>
       </h1>
