@@ -24,13 +24,13 @@ function HeroSection({ onUploadClick }) {
       </div>
 
       {/* Heading */}
-      <h1 className="relative z-30 md:text-7xl text-5xl text-white text-center max-w-4xl leading-tight heading">
+      <h1 className="relative z-30 md:text-7xl text-4xl text-white text-center max-w-4xl leading-tight heading">
         Unlock Legal Insights <br />
         with <span className="text-amber-400">Law Lens</span>
       </h1>
 
       {/* Description */}
-      <p className="relative z-30 mt-6 subtext text-center text-neutral-300 max-w-2xl text-xl">
+      <p className="relative z-30 mt-4 md:mt-6 subtext text-center text-neutral-300 max-w-2xl text-base md:text-xl px-8 md:px-6">
         Upload any legal document and instantly extract key terms, chat with an AI
         assistant, and discover related case law.
       </p>
@@ -39,7 +39,7 @@ function HeroSection({ onUploadClick }) {
       <div className="relative z-30 mt-8">
         <button
           onClick={onUploadClick}
-          className=" heading inline-flex items-center px-8 py-4 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold text-xl transition-all duration-300 hover:scale-105"
+          className=" heading inline-flex items-center px-8 py-4 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold md:text-xl transition-all duration-300 hover:scale-105 text-lg "
         >
           Upload Your Document
         </button>
