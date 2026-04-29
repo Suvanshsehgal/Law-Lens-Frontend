@@ -57,8 +57,8 @@ function HeroSection({ onUploadClick }) {
         </button>
         
         {!isLoggedIn && remainingTrials > 0 && (
-          <p className="text-amber-200 text-sm subtext">
-            🎁 {remainingTrials} free {remainingTrials === 1 ? 'analysis' : 'analyses'} remaining
+          <p className="text-neutral-300 text-sm subtext">
+            You have {remainingTrials} free {remainingTrials === 1 ? 'analysis' : 'analyses'} remaining
           </p>
         )}
       </div>
