@@ -6,6 +6,7 @@ function Navbar() {
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState(null);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [remainingTrials, setRemainingTrials] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -14,6 +15,10 @@ function Navbar() {
     const userData = localStorage.getItem("user");
     if (userData) {
       setUser(JSON.parse(userData));
+      setRemainingTrials(null); // Hide trials for logged-in users
+    } else {
+      const trials = localStorage.getItem("freeTrials");
+      setRemainingTrials(trials ? parseInt(trials, 10) : 2);
     }
   }, [location]);
 
@@ -133,20 +138,27 @@ function Navbar() {
                 )}
               </div>
             ) : (
-              <button
-                onClick={() => navigate("/login")}
-                className="
-                  heading text-base
-                  px-5 py-2 rounded-md
-                  bg-amber-500/90 text-slate-900 font-semibold
-                  transition-all duration-300 ease-out
-                  hover:bg-amber-400
-                  hover:shadow-lg hover:shadow-amber-500/30
-                  hover:scale-x-105
-                "
-              >
-                Get Started
-              </button>
+              <div className="flex items-center gap-4">
+                {remainingTrials !== null && remainingTrials >= 0 && (
+                  <span className="text-sm text-amber-300 subtext">
+                    🎁 {remainingTrials} free {remainingTrials === 1 ? 'trial' : 'trials'}
+                  </span>
+                )}
+                <button
+                  onClick={() => navigate("/login")}
+                  className="
+                    heading text-base
+                    px-5 py-2 rounded-md
+                    bg-amber-500/90 text-slate-900 font-semibold
+                    transition-all duration-300 ease-out
+                    hover:bg-amber-400
+                    hover:shadow-lg hover:shadow-amber-500/30
+                    hover:scale-x-105
+                  "
+                >
+                  Get Started
+                </button>
+              </div>
             )}
           </div>
 

@@ -42,6 +42,9 @@ function SignUp() {
           email: data.email,
         })
       );
+      
+      // Reset free trials on signup
+      localStorage.removeItem("freeTrials");
 
       setTimeout(() => navigate("/login"), 1500);
     } catch (err) {

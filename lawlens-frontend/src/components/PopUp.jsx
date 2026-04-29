@@ -3,6 +3,15 @@ import { Upload, FileText, Check, X } from "lucide-react";
 
 function PopUp({ onClose, onFileSelect }) {
   const [file, setFile] = useState(null);
+  const [remainingTrials, setRemainingTrials] = useState(null);
+
+  useState(() => {
+    const isLoggedIn = localStorage.getItem("token") !== null;
+    if (!isLoggedIn) {
+      const trials = localStorage.getItem("freeTrials");
+      setRemainingTrials(trials ? parseInt(trials, 10) : 2);
+    }
+  }, []);
 
   const handleFile = (e) => {
     const uploaded = e.target.files[0]; 
@@ -35,9 +44,16 @@ function PopUp({ onClose, onFileSelect }) {
 
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-800 heading">
-            Upload Legal Document
-          </h2>
+          <div>
+            <h2 className="text-2xl font-bold text-gray-800 heading">
+              Upload Legal Document
+            </h2>
+            {remainingTrials !== null && (
+              <p className="text-sm text-amber-600 mt-1 subtext">
+                🎁 {remainingTrials} free {remainingTrials === 1 ? 'trial' : 'trials'} remaining
+              </p>
+            )}
+          </div>
 
           <button
             onClick={handleClose}

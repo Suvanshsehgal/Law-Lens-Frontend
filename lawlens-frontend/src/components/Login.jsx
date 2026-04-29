@@ -37,6 +37,9 @@ function Login() {
           email: data.email,
         })
       );
+      
+      // Reset free trials on login
+      localStorage.removeItem("freeTrials");
 
       setTimeout(() => navigate("/"), 1200);
     } catch (err) {

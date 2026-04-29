@@ -3,6 +3,18 @@ import { Boxes } from "../components/ui/background-boxes";
 import { cn } from "../lib/utils";
 
 function HeroSection({ onUploadClick }) {
+  const [remainingTrials, setRemainingTrials] = React.useState(2);
+
+  React.useEffect(() => {
+    const isLoggedIn = localStorage.getItem("token") !== null;
+    if (!isLoggedIn) {
+      const trials = localStorage.getItem("freeTrials");
+      setRemainingTrials(trials ? parseInt(trials, 10) : 2);
+    }
+  }, []);
+
+  const isLoggedIn = localStorage.getItem("token") !== null;
+
   return (
     <div className="h-screen relative z-10 w-full overflow-hidden bg-[#222E46] flex flex-col items-center justify-center rounded-lg">
 
@@ -36,13 +48,19 @@ function HeroSection({ onUploadClick }) {
       </p>
 
       {/* CTA */}
-      <div className="relative z-30 mt-8">
+      <div className="relative z-30 mt-8 flex flex-col items-center gap-3">
         <button
           onClick={onUploadClick}
           className=" heading inline-flex items-center px-8 py-4 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold md:text-xl transition-all duration-300 hover:scale-105 text-lg "
         >
           Upload Your Document
         </button>
+        
+        {!isLoggedIn && remainingTrials > 0 && (
+          <p className="text-amber-200 text-sm subtext">
+            🎁 {remainingTrials} free {remainingTrials === 1 ? 'analysis' : 'analyses'} remaining
+          </p>
+        )}
       </div>
     </div>
   );

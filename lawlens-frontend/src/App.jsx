@@ -36,19 +36,54 @@ useEffect(() => {
   const [error, setError] = useState(null);
   const [showUploadModal, setShowUploadModal] = useState(false);
   const [showLoginPrompt, setShowLoginPrompt] = useState(false);
+  const [showTrialLimitModal, setShowTrialLimitModal] = useState(false);
 
   // Check if user is logged in
   const isLoggedIn = () => {
     return localStorage.getItem("token") !== null;
   };
 
+  // Get remaining free trials
+  const getRemainingTrials = () => {
+    const trials = localStorage.getItem("freeTrials");
+    return trials ? parseInt(trials, 10) : 2;
+  };
+
+  // Use a free trial
+  const useTrial = () => {
+    const remaining = getRemainingTrials();
+    if (remaining > 0) {
+      localStorage.setItem("freeTrials", (remaining - 1).toString());
+      return true;
+    }
+    return false;
+  };
+
   // Handle upload button click
   const handleUploadClick = () => {
-    if (!isLoggedIn()) {
-      setShowLoginPrompt(true);
-    } else {
+    if (isLoggedIn()) {
       setShowUploadModal(true);
+    } else {
+      const remaining = getRemainingTrials();
+      if (remaining > 0) {
+        setShowUploadModal(true);
+      } else {
+        setShowTrialLimitModal(true);
+      }
     }
+  };
+
+  // Handle file selection with trial tracking
+  const handleFileSelect = (file) => {
+    if (!isLoggedIn()) {
+      if (!useTrial()) {
+        setShowTrialLimitModal(true);
+        return;
+      }
+    }
+    setDocResult(null);
+    setError(null);
+    setSelectedFile(file);
   };
 
   return (
@@ -58,32 +93,32 @@ useEffect(() => {
       {/* HERO SECTION */}
       <HeroSection onUploadClick={handleUploadClick} />
 
-      {/* LOGIN PROMPT MODAL */}
-      {showLoginPrompt && (
+      {/* TRIAL LIMIT MODAL */}
+      {showTrialLimitModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div
             className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-            onClick={() => setShowLoginPrompt(false)}
+            onClick={() => setShowTrialLimitModal(false)}
           />
-          <div className="relative bg-white rounded-xl shadow-xl w-[400px] p-6">
+          <div className="relative bg-white rounded-xl shadow-xl w-[450px] p-6">
             <h2 className="text-2xl font-bold text-gray-800 heading mb-4">
-              Login Required
+              Free Trial Limit Reached
             </h2>
             <p className="text-gray-600 subtext mb-6">
-              Please login to upload and analyze documents.
+              You've used your 2 free document analyses. Create an account to continue analyzing unlimited documents!
             </p>
             <div className="flex gap-3">
               <button
-                onClick={() => setShowLoginPrompt(false)}
+                onClick={() => setShowTrialLimitModal(false)}
                 className="flex-1 px-4 py-3 rounded border-2 border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-colors"
               >
                 Cancel
               </button>
               <button
-                onClick={() => navigate("/login")}
+                onClick={() => navigate("/signup")}
                 className="flex-1 px-4 py-3 rounded bg-amber-500 hover:bg-amber-600 text-white font-medium transition-colors"
               >
-                Login
+                Sign Up Free
               </button>
             </div>
           </div>
@@ -94,12 +129,7 @@ useEffect(() => {
       {showUploadModal && (
         <PopUp
           onClose={() => setShowUploadModal(false)}
-          onFileSelect={(file) => {
-            // Clear previous results when selecting a new file
-            setDocResult(null);
-            setError(null);
-            setSelectedFile(file);
-          }}
+          onFileSelect={handleFileSelect}
         />
       )}
 
